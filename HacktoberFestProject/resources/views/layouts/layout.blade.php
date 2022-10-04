@@ -91,8 +91,6 @@
 
                 <!-- Right Section -->
                 <div class="space-x-1">
-                    {{-- @include('admin.layouts.notifications') --}}
-                    {{-- @include('admin.layouts.user-menu') --}}
                 </div>
                 <!-- END Right Section -->
             </div>
@@ -148,19 +146,6 @@
     <script src="{{ asset('packages/doubleScrollbar/jquery.doubleScroll.js') }}"></script>
     <script src="{{ mix('js/app.js') }}"></script>
     <script>
-        // $(document).ready(function() {
-        //     $('.db-scroll').doubleScroll({
-        //         resetOnWindowResize: true
-        //     });
-
-        //     $('.table-responsive').on('show.bs.dropdown', function () {
-        //         $('.table-responsive').css( "overflow", "inherit" );
-        //     });
-
-        //     $('.table-responsive').on('hide.bs.dropdown', function () {
-        //         $('.table-responsive').css( "overflow", "auto" );
-        //     })
-        // });
     </script>
     @stack('scripts')
 </body>
