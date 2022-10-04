@@ -1,0 +1,1 @@
+<span class="badge larger-badge badge-pill bg-{{ $badge_class ?? 'primary' }} text-white {{ $class ?? '' }}" >{{ $text }}</span>
