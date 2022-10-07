@@ -23,7 +23,7 @@ class CreateProfilesTable extends Migration
             $table->string('tel', 100)->nullable();
             $table->string('email')->nullable();
             $table->timestamps();
-            $table->status();
+            $table->smallInteger('status')->default(1);
 
             $table->foreign('province_id')->references('id')->on('provinces')->nullOnDelete();
         });
