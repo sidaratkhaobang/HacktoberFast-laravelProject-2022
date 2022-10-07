@@ -6,7 +6,11 @@
         <div class="block-header block-header-default">
             <h3 class="block-title">รายการทั้งหมด</h3>
             <div class="block-options">
-                <div class="block-options-item"></div>
+                <div class="block-options-item">
+                    <a href="{{ route('profiles.create') }}" class="btn btn-primary">
+                        <i class="fa fa-plus"></i>Add
+                    </a>
+                </div>
             </div>
         </div>
         <div class="block-content">
@@ -24,11 +28,10 @@
                         </tr>
                     </thead>
                     <tbody>
-                        
+
                     </tbody>
                 </table>
             </div>
         </div>
     </div>
 @endsection
-
