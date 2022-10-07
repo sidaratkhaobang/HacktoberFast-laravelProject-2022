@@ -77,32 +77,5 @@ class ImportProvinces extends Command
             }
         }
 
-        // map ref_id
-
-        $handle = fopen(storage_path('olddb/DBProvince.csv'), "r");
-
-        $header = true;
-        while ($col = fgetcsv($handle, 5000, ",")) {
-            if ($header) {
-                $header = false;
-                continue;
-            }
-            if (sizeof($col) < 6) {
-                continue;
-            }
-            $id = trim($col[0]);
-            $name = trim($col[2]);
-
-            if (empty($name)) {
-                continue;
-            }
-
-            $exists = DB::table('provinces')->where('name_th', $name)->exists();
-            if ($exists) {
-                DB::table('provinces')->where('name_th', $name)->update([
-                    'ref_id' => $id,
-                ]);
-            }
-        }
     }
 }
