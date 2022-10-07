@@ -58,10 +58,11 @@ class ImportProvinces extends Command
                 continue;
             }
             $id = trim($col[0]);
+            $code = trim($col[1]);
             $name_th = trim($col[2]);
             $name_en = trim($col[3]);
 
-            if (empty($id) || empty($name_th)) {
+            if (empty($id) || empty($code) || empty($name_th)) {
                 continue;
             }
 
@@ -69,6 +70,7 @@ class ImportProvinces extends Command
             if (!$exists) {
                 DB::table('provinces')->insert([
                     'id' => $id,
+                    'code' => $code,
                     'name_th' => $name_th,
                     'name_en' => $name_en,
                 ]);
