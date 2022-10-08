@@ -58,10 +58,11 @@ class ImportProvinces extends Command
                 continue;
             }
             $id = trim($col[0]);
+            $code = trim($col[1]);
             $name_th = trim($col[2]);
             $name_en = trim($col[3]);
 
-            if (empty($id) || empty($name_th)) {
+            if (empty($id) || empty($code) || empty($name_th)) {
                 continue;
             }
 
@@ -69,38 +70,12 @@ class ImportProvinces extends Command
             if (!$exists) {
                 DB::table('provinces')->insert([
                     'id' => $id,
+                    'code' => $code,
                     'name_th' => $name_th,
                     'name_en' => $name_en,
                 ]);
             }
         }
 
-        // map ref_id
-
-        $handle = fopen(storage_path('olddb/DBProvince.csv'), "r");
-
-        $header = true;
-        while ($col = fgetcsv($handle, 5000, ",")) {
-            if ($header) {
-                $header = false;
-                continue;
-            }
-            if (sizeof($col) < 6) {
-                continue;
-            }
-            $id = trim($col[0]);
-            $name = trim($col[2]);
-
-            if (empty($name)) {
-                continue;
-            }
-
-            $exists = DB::table('provinces')->where('name_th', $name)->exists();
-            if ($exists) {
-                DB::table('provinces')->where('name_th', $name)->update([
-                    'ref_id' => $id,
-                ]);
-            }
-        }
     }
 }

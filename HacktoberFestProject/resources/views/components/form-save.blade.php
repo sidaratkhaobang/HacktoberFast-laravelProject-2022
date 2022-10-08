@@ -58,23 +58,6 @@
         $(".btn-save-form").on("click", function() {
             let storeUri = "{{ $store_uri }}";
             var formData = new FormData(document.querySelector('#save-form'));
-            if (window.myDropzone) {
-                var dropzones = window.myDropzone;
-                dropzones.forEach((dropzone) => {
-                    let dropzone_id = dropzone.options.params.elm_id;
-                    let files = dropzone.getQueuedFiles();
-                    files.forEach((file) => {
-                        formData.append(dropzone_id + '[]', file);
-                    });
-                    // delete data
-                    let pending_delete_ids = dropzone.options.params.pending_delete_ids;
-                    if (pending_delete_ids.length > 0) {
-                        pending_delete_ids.forEach((id) => {
-                            formData.append(dropzone_id + '__pending_delete_ids[]', id);
-                        });
-                    }
-                });
-            }
             saveForm(storeUri, formData);
         });
     </script>

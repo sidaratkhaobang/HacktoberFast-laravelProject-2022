@@ -12,6 +12,10 @@ class ProfileController extends Controller
     }
 
     public function create() {
-        return view('profiles.form', []);
+        $title = 'เพิ่มข้อมูลโปรไฟล์ผู้ใช้งาน';
+        return view('profiles.form', [
+            'title' => $title,
+            'value' => '',
+        ]);
     }
 }
