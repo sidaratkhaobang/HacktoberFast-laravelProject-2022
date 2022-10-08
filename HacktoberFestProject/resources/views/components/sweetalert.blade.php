@@ -15,20 +15,20 @@
 
     function warningAlert(text){
         return mySwal.fire({
-            title: "{{ __('lang.store_error_title') }}",
+            title: "เกิดข้อผิดพลาด",
             text: text ,
             icon: 'warning',
-            confirmButtonText: "{{ __('lang.ok') }}"
+            confirmButtonText: "ตกลง"
         });
     }
 
     function errorAlert(text){
         return mySwal.fire({
-            title: "{{ __('lang.store_error_title') }}",
+            title: "เกิดข้อผิดพลาด",
             text: text ,
             icon: 'error',
-            confirmButtonText: "{{ __('lang.ok') }}"
-        });     
+            confirmButtonText: "ตกลง"
+        });
     }
 
     function copyAlert(text){
@@ -38,7 +38,7 @@
             icon: 'success',
             showConfirmButton: false,
             timer: 1000
-        });     
+        });
     }
 
 </script>

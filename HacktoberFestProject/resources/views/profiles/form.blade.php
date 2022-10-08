@@ -35,7 +35,7 @@
                 <div class="row push mb-4">
                     <div class="col-sm-12">
                         <label for="address" class="text-start col-form-label">ที่อยู่ติดต่อ</label>
-                        <textarea type="text" class="form-control" id="	address" name="address">{{ $value }}</textarea>
+                        <textarea type="text" class="form-control" id="address" name="address">{{ $value }}</textarea>
                     </div>
                 </div>
                 <div class="row push">
@@ -49,6 +49,7 @@
     </div>
 @endsection
 
+@include('components.sweetalert')
 @include('components.form-save', [
     'store_uri' => route('profiles.store'),
 ])
