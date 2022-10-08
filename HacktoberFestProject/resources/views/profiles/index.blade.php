@@ -20,18 +20,35 @@
                 <table class="table table-striped table-vcenter">
                     <thead class="bg-body-dark">
                         <tr>
-                            <th></th>
-                            <th></th>
-                            <th></th>
-                            <th></th>
+                            <th>#</th>
+                            <th>ชื่อ - นามสกุล</th>
+                            <th>เบอร์โทรศัพท์</th>
+                            <th>E-mail</th>
+                            <th>จังหวัด</th>
                             <th style="width: 100px;" class="sticky-col"></th>
                         </tr>
                     </thead>
                     <tbody>
-
+                        @foreach ($list as $index => $d)
+                        <tr>
+                            <td>{{ $index + 1 }}</td>
+                            <td>{{ $d->name }}  {{$d->lastname}}</td>
+                            <td>{{ $d->tel }}</td>
+                            <td>{{ $d->email }}</td>
+                            <td>{{ $d->province_name }}</td>
+                            <td class="sticky-col text-center">
+                                {{-- @include('admin.components.dropdown-action', [
+                                    'view_route' => route('admin.customers.show', ['customer' => $d]),
+                                    'edit_route' => route('admin.customers.edit', ['customer' => $d]),
+                                    'delete_route' => route('admin.customers.destroy', ['customer' => $d]),
+                                ]) --}}
+                            </td>
+                        </tr>
+                    @endforeach
                     </tbody>
                 </table>
             </div>
+            {!! $list->appends(\Request::except('page'))->render() !!}
         </div>
     </div>
 @endsection

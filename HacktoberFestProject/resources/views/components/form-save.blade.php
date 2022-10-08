@@ -11,10 +11,10 @@
                         }
                     @else
                         mySwal.fire({
-                        title: "{{ __('lang.store_success_title') }}",
-                        text: "{{ __('lang.store_success_message') }}",
+                        title: "สำเร็จ",
+                        text: "บันทึกข้อมูลเรียบร้อย",
                         icon: 'success',
-                        confirmButtonText: "{{ __('lang.ok') }}"
+                        confirmButtonText: "ตกลง"
                         }).then(value => {
                         if (response.data.redirect) {
                         if (response.data.redirect === 'false'){
@@ -31,10 +31,10 @@
                     @endif
                 } else {
                     mySwal.fire({
-                        title: "{{ __('lang.store_error_title') }}",
+                        title: "เกิดข้อผิดพลาด",
                         text: response.data.message,
                         icon: 'error',
-                        confirmButtonText: "{{ __('lang.ok') }}",
+                        confirmButtonText: "ตกลง",
                     }).then(value => {
                         if (value) {
                             //
@@ -43,10 +43,10 @@
                 }
             }).catch(error => {
                 mySwal.fire({
-                    title: "{{ __('lang.store_error_title') }}",
+                    title: "เกิดข้อผิดพลาด",
                     text: error.response.data.message,
                     icon: 'error',
-                    confirmButtonText: "{{ __('lang.ok') }}",
+                    confirmButtonText: "ตกลง",
                 }).then(value => {
                     if (value) {
                         //
