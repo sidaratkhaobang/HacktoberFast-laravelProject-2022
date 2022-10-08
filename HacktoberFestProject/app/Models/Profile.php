@@ -16,4 +16,9 @@ class Profile extends Model
     protected $fillable = [
         'id',
     ];
+
+    public function province()
+    {
+        return $this->hasOne(Province::class, 'id', 'province_id');
+    }
 }

@@ -10,7 +10,7 @@ class ProfileController extends Controller
     public function index(Request $request)
     {
         $list = Profile::leftJoin('provinces', 'provinces.id', '=', 'profiles.province_id')
-        ->select('profiles.name', 'profiles.lastname', 'profiles.tel', 'profiles.email', 'provinces.name_th as province_name')
+        ->select('profiles.id', 'profiles.name', 'profiles.lastname', 'profiles.tel', 'profiles.email', 'provinces.name_th as province_name')
         ->orderBy('profiles.created_at', 'desc')
         ->paginate(20);
         return view('profiles.index', [
@@ -19,10 +19,47 @@ class ProfileController extends Controller
     }
 
     public function create() {
+        $d = new Profile();
+        $province_name = null;
         $title = 'เพิ่มข้อมูลโปรไฟล์ผู้ใช้งาน';
         return view('profiles.form', [
+            'd' => $d,
             'title' => $title,
-            'value' => '',
+            'province_name' => $province_name,
+        ]);
+    }
+
+    public function edit(Profile $profile)
+    {
+        $province_name = $profile->province ? $profile->province->name_th : null;
+        $title = 'แก้ไขข้อมูลโปรไฟล์ผู้ใช้งาน';
+        return view('profiles.form', [
+            'd' => $profile,
+            'title' => $title,
+            'province_name' => $province_name,
+        ]);
+    }
+
+    public function show(Profile $profile)
+    {
+        $province_name = $profile->province ? $profile->province->name_th : null;
+        $title = 'ดูข้อมูลโปรไฟล์ผู้ใช้งาน';
+        return view('profiles.form', [
+            'd' => $profile,
+            'title' => $title,
+            'province_name' => $province_name,
+            'view' => true
+        ]);
+    }
+
+    public function destroy($id)
+    {
+        $profile = Profile::find($id);
+        $profile->delete();
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Complete',
         ]);
     }
 

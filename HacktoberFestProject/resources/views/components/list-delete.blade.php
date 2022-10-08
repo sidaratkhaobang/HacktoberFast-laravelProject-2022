@@ -3,16 +3,16 @@
     $(".btn-delete-row").on("click", function () {
         var route_delete = $(this).attr('data-route-delete');
         mySwal.fire({
-            title: "{{ __('lang.delete_data') }}",
-            text: "{{ __('lang.delete_message_confirm') }}",
+            title: "ยืนยันลบข้อมูล",
+            text: "ต้องการลบข้อมูลใช่หรือไม่",
             icon: 'warning',
             showCancelButton: true,
             customClass: {
                 confirmButton: 'btn btn-danger m-1',
                 cancelButton: 'btn btn-secondary m-1'
             },
-            confirmButtonText: "{{ __('lang.ok') }}",
-            cancelButtonText: "{{ __('lang.cancel') }}",
+            confirmButtonText: "ตกลง",
+            cancelButtonText: "ยกเลิก",
             html: false,
             preConfirm: e => {
                 return new Promise(resolve => {
@@ -26,10 +26,10 @@
                 axios.delete(route_delete).then(response => {
                     if (response.data.success) {
                         mySwal.fire({
-                            title: "{{ __('lang.delete_success') }}",
-                            text: "{{ __('lang.deleted_message') }}",
+                            title: "เรียบร้อย",
+                            text: "ลบข้อมูลเรียบร้อย",
                             icon: 'success',
-                            confirmButtonText: "{{ __('lang.ok') }}"
+                            confirmButtonText: "ตกลง"
                         }).then(value => {
                             if (response.data.redirect) {
                                 window.location.href = response.data.redirect;
@@ -39,10 +39,10 @@
                         });
                     } else {
                         mySwal.fire({
-                            title: "{{ __('lang.delete_fail') }}",
+                            title: "ไม่สามารถลบข้อมูลได้",
                             text: response.data.message,
                             icon: 'error',
-                            confirmButtonText: "{{ __('lang.ok') }}",
+                            confirmButtonText: "ตกลง",
                         }).then(value => {
                             if (value) {
                                 //
@@ -56,7 +56,7 @@
                 title: "{{ __('lang.delete_fail') }}",
                 text: error.response.data.message,
                 icon: 'error',
-                confirmButtonText: "{{ __('lang.ok') }}",
+                confirmButtonText: "ตกลง",
             }).then(value => {
                 if (value) {
                     //
