@@ -98,7 +98,7 @@
 
             <!-- Header Loader -->
             <!-- Please check out the Loaders page under Components category to see examples of showing/hiding it -->
-            <div id="page-header-loader" class="overlay-header bg-header-dark">
+            {{-- <div id="page-header-loader" class="overlay-header bg-header-dark">
                 <div class="bg-white-10">
                     <div class="content-header">
                         <div class="w-100 text-center">
@@ -106,7 +106,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> --}}
             <!-- END Header Loader -->
         </header>
         <!-- END Header -->
