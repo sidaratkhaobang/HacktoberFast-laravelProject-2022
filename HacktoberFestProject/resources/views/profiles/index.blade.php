@@ -37,11 +37,11 @@
                             <td>{{ $d->email }}</td>
                             <td>{{ $d->province_name }}</td>
                             <td class="sticky-col text-center">
-                                {{-- @include('admin.components.dropdown-action', [
-                                    'view_route' => route('admin.customers.show', ['customer' => $d]),
-                                    'edit_route' => route('admin.customers.edit', ['customer' => $d]),
-                                    'delete_route' => route('admin.customers.destroy', ['customer' => $d]),
-                                ]) --}}
+                                @include('components.dropdown-action', [
+                                    'view_route' => route('profiles.show', ['profile' => $d]),
+                                    'edit_route' => route('profiles.edit', ['profile' => $d]),
+                                    'delete_route' => route('profiles.destroy', ['profile' => $d]),
+                                ])
                             </td>
                         </tr>
                     @endforeach
@@ -52,3 +52,7 @@
         </div>
     </div>
 @endsection
+
+
+@include('components.sweetalert')
+@include('components.list-delete')
